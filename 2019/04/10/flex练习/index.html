@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex布局练习</title>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        background: linear-gradient(top, #222, #333);
+        background: -webkit-linear-gradient(top, #222, #333);
+
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    [class$="face"] {
+        display: flex;
+        margin: 14px;
+        width: 104px;
+        height: 104px;
+        padding: 4px;
+        background: #e7e7e7;
+        border-radius: 10%;
+        box-shadow: inset 0 5px white,
+        inset 5px 0 #d7d7d7,
+        inset -5px 0 #bbbb,
+        inset 0 -5px #d7d7d7;
+    }
+
+    .item {
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin: 4px;
+        background-color: #333;
+        box-shadow: inset 0 3px #111;
+    }
+
+    .first-face {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .second-face {
+        justify-content: space-between;
+    }
+
+    .second-face .item:nth-child(2) {
+        align-self: flex-end;
+    }
+
+    .third-face {
+        justify-content: space-between;
+    }
+
+    .third-face .item:nth-child(2) {
+        align-self: center;
+    }
+
+    .third-face .item:nth-child(3) {
+        align-self: flex-end;
+    }
+
+    .fourth-face,
+    .fifth-face,
+    .sixth-face {
+        justify-content: space-between;
+    }
+
+    .fourth-face .column,
+    .fifth-face .column,
+    .sixth-face .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between
+    }
+
+    .fifth-face .column:nth-child(2) {
+        /* align-self: center; */
+        justify-content: center;
+    }
+
+</style>
+
+<body>
+    <div class="first-face">
+        <span class="item"></span>
+    </div>
+    <div class="second-face">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="third-face">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="fourth-face">
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+    <div class="fifth-face">
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+    <div class="sixth-face">
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":50,"height":100},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
