@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://xxxxxxx.xxx"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="移动端，CSS,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Sonho Creek" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="接触过的适配方式适配的目的就是在不同的手机设配上展示的结果看起来一样的 在初次接触响应式布局时和移动端布局时，第一次知道了rem，em &amp;gt; rem是想对于html的font-size的大小来  &amp;gt; em是相对于当前的font-size的大小 慢慢的了解了其他适配方式">
+<meta name="keywords" content="移动端，CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="响应式适配">
+<meta property="og:url" content="http://yoursite.com/2018/05/30/响应式适配/index.html">
+<meta property="og:site_name" content="Sonho Creek">
+<meta property="og:description" content="接触过的适配方式适配的目的就是在不同的手机设配上展示的结果看起来一样的 在初次接触响应式布局时和移动端布局时，第一次知道了rem，em &amp;gt; rem是想对于html的font-size的大小来  &amp;gt; em是相对于当前的font-size的大小 慢慢的了解了其他适配方式">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T03:05:18.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="响应式适配">
+<meta name="twitter:description" content="接触过的适配方式适配的目的就是在不同的手机设配上展示的结果看起来一样的 在初次接触响应式布局时和移动端布局时，第一次知道了rem，em &amp;gt; rem是想对于html的font-size的大小来  &amp;gt; em是相对于当前的font-size的大小 慢慢的了解了其他适配方式">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/30/响应式适配/">
+
+
+
+
+
+  <title>响应式适配 | Sonho Creek</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sonho Creek</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Casual notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            历程
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/响应式适配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sonho Creek">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://img.faloo.com/NovelNode/0x0/1/1085/1085899.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sonho Creek">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">响应式适配</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T11:32:19+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,082
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="接触过的适配方式"><a href="#接触过的适配方式" class="headerlink" title="接触过的适配方式"></a>接触过的适配方式</h3><p>适配的目的就是在不同的手机设配上展示的结果看起来一样的</p>
+<p>在初次接触响应式布局时和移动端布局时，第一次知道了rem，em</p>
+<pre><code>&gt; rem是想对于html的font-size的大小来
+
+&gt; em是相对于当前的font-size的大小
+</code></pre><p>慢慢的了解了其他适配方式<br><a id="more"></a><br><strong>首先不管哪种适配方式，都需要添加一个meta</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 快捷键是meta:vp --&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,maximum-scale=1.0, </span><br><span class="line"> user-scalable=no;&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="第一种方式-媒体查询"><a href="#第一种方式-媒体查询" class="headerlink" title="第一种方式 媒体查询"></a>第一种方式 媒体查询</h4><p>在初学scss时，所使用的一种适配方式，现在响应式就是用的@media方法</p>
+<blockquote>
+<p>通过使用断点来进行设置根目录的字体大小</p>
+</blockquote>
+<blockquote>
+<p>由于市面上手机种类多，如果完全配置所需要的内容太多而放弃</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (min-width: 375px)&#123;</span><br><span class="line">    html &#123;</span><br><span class="line">        font-size: 14.0625px;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (min-width: 360px)&#123;</span><br><span class="line">    html &#123;</span><br><span class="line">        font-size: 13.5px;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (min-width: 320px)&#123;</span><br><span class="line">    html &#123;</span><br><span class="line">        font-size: 12px;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">html &#123;</span><br><span class="line">    font-size: 16px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是突然看见的一个版本：</p>
+<blockquote>
+<p>使用了手淘的方式，通过动态改变字体大小来适应</p>
+</blockquote>
+<blockquote>
+<p>使用sass的函数方法动态计算宽度</p>
+</blockquote>
+<blockquote>
+<p>不知道是否是版本问题，跟字体大小偏小，虽然设置的是在750px下的，但在750px下的宽度去相比原始宽度小</p>
+</blockquote>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 需要先引入： --&gt;</span><br><span class="line">&lt;script src=&quot;http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!-- 这里定义初始字体大 根据原型图大小除10判断 --&gt;</span><br><span class="line">$base-font-size: 75px;</span><br><span class="line"></span><br><span class="line">@function px2rem($px) &#123;</span><br><span class="line">    @return ($px / $base-font-size) * 1rem;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 根据原型图测量多少计算 --&gt;</span><br><span class="line">.box&#123;</span><br><span class="line">    width: px2rem(180px);</span><br><span class="line">    height: px2rem(180px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 最后生成 在各个手机中的展示一致--&gt;</span><br><span class="line">.box &#123;</span><br><span class="line">  width: 2.4rem;</span><br><span class="line">  height: 2.4rem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="第二种方式-js控制"><a href="#第二种方式-js控制" class="headerlink" title="第二种方式 js控制"></a>第二种方式 js控制</h4><p>在工作以后接触的这种方式，通过js判断手机屏幕来设置根元素的字体大小</p>
+<ol>
+<li><blockquote>
+<p>通过屏幕宽度的占比设置根目录宽度，同样是基于750px的</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>但是书写的时候需要计算比较麻烦，比如45px时 需要设置 (45/37.5) rem 相对来讲不好计算</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 获取手机屏幕的宽度 --&gt;</span><br><span class="line">var htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;</span><br><span class="line">&lt;!-- 获取根元素 --&gt;</span><br><span class="line">var htmlDom = document.getElementByTagHtml(&apos;html&apos;)[0]</span><br><span class="line"></span><br><span class="line">&lt;!-- 设置根元素字体 --&gt;</span><br><span class="line">htmlDom.style.fontSize = htmlWidth/20 + &apos;px&apos;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>同样是js控制，设置份额是方便（在750下45/100,方便好算）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;</span><br><span class="line">var htmlDom = document.getElementsByTagName(&apos;html&apos;)[0]</span><br><span class="line">htmlDom.style.fontSize = htmlWidth/750*100 + &apos;px&apos;</span><br><span class="line">&lt;!-- 这样计算下来1rem = 100 px; 那么45px 时就为0.45px--&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="其他成熟好用的方法"><a href="#其他成熟好用的方法" class="headerlink" title="其他成熟好用的方法"></a>其他成熟好用的方法</h4><ul>
+<li>第一种 rem + simple-flexible</li>
+</ul>
+<ol>
+<li>rem + simple-flexible（<a href="https://github.com/kujian/simple-flexible" target="_blank" rel="noopener">simple-flexible 的 Github 地址</a>）</li>
+<li>不需要全部，只需要一份flexible.min.js 或者flexible.js就行</li>
+<li>根据测量进行转换比： 10px = 1rem</li>
+<li>搭配 以下代码更为方便<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$base-font-size: 75px;</span><br><span class="line">@function px2rem($px, $base-font-size: 75px) &#123;</span><br><span class="line">    @return ($px / $base-font-size) * 0.75rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 可以直接计算 --&gt;</span><br><span class="line">.box&#123;</span><br><span class="line">    width: px2rem(240px)</span><br><span class="line">    height: px2rem(240px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>第二种 flex布局 <blockquote>
+<p>现如今的flex的兼容性很不错，对于移动端布局也很方便</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="最后，一般来讲不推荐字体也使用rem；现在使用rem-flexible方法或者flex布局时最好的方法了"><a href="#最后，一般来讲不推荐字体也使用rem；现在使用rem-flexible方法或者flex布局时最好的方法了" class="headerlink" title="最后，一般来讲不推荐字体也使用rem；现在使用rem + flexible方法或者flex布局时最好的方法了"></a>最后，一般来讲不推荐字体也使用rem；现在使用rem + flexible方法或者flex布局时最好的方法了</h4><h4 id="移动端一像素问题"><a href="#移动端一像素问题" class="headerlink" title="移动端一像素问题"></a>移动端一像素问题</h4><p>刚开始工作的时候，没有注意到在手机上的边框看起来宽，因此需要修改才开始接触处理一像素的问题</p>
+<p>最后使用css3的transform: scale() 缩放属性实现</p>
+<ol>
+<li><p>既然使用scale() 了，就用height:1 来表示宽度，然后，缩小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    height:1;</span><br><span class="line">    background: #333;</span><br><span class="line">    transform:scaleY(0.5)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用伪类设置到div上 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div:after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    display: block;</span><br><span class="line">    width:100%;</span><br><span class="line">    height:1px;</span><br><span class="line">    transform: scaleY(0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>但这样只可以实现一条线，如果想实现边框都是一像素呢<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div:after&#123;</span><br><span class="line">        content:&apos;&apos;;</span><br><span class="line">        display: block;</span><br><span class="line">        width:200%;</span><br><span class="line">        height:200%;</span><br><span class="line">        border:1px solid red;</span><br><span class="line">        transform: scale(0.5);</span><br><span class="line">        transform-origin: top left</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样便实现了所有边框1px</p>
+<ol start="3">
+<li>总结<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">.border-top::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width:200%;</span><br><span class="line">    height:1px;</span><br><span class="line">    background:red;</span><br><span class="line">    transform: scale(0.5);</span><br><span class="line">    transform-origin: top left</span><br><span class="line">&#125;</span><br><span class="line">.border-bottom::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width:200%;</span><br><span class="line">    height:1px;</span><br><span class="line">    background:red;</span><br><span class="line">    transform: scale(0.5);</span><br><span class="line">    transform-origin: top left</span><br><span class="line">&#125;</span><br><span class="line">.border-left::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width:1px;</span><br><span class="line">    height:200%;</span><br><span class="line">    background:red;</span><br><span class="line">    transform: scale(0.5);</span><br><span class="line">    transform-origin: top left</span><br><span class="line">&#125;</span><br><span class="line">.border-right::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    width:1px;</span><br><span class="line">    height:200%;</span><br><span class="line">    background:red;</span><br><span class="line">    transform: scale(0.5);</span><br><span class="line">    transform-origin: top left</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.border::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width:200%;</span><br><span class="line">    height:200%;</span><br><span class="line">    border:1px solid red;</span><br><span class="line">    transform: scale(0.5);</span><br><span class="line">    transform-origin: top left</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="最近更新"><a href="#最近更新" class="headerlink" title="最近更新"></a>最近更新</h3><ol>
+<li>最近看到的一种方法<br>代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!function(e)&#123;function t(a)&#123;if(i[a])return i[a].exports;var n=i[a]=&#123;exports:&#123;&#125;,id:a,loaded:!1&#125;;return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports&#125;var i=&#123;&#125;;return t.m=e,t.c=i,t.p=&quot;&quot;,t(0)&#125;([function(e,t)&#123;&quot;use strict&quot;;Object.defineProperty(t,&quot;__esModule&quot;,&#123;value:!0&#125;);var i=window;t[&quot;default&quot;]=i.flex=function(e,t)&#123;var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d&#123;3&#125;)/i),l=o.match(/U3\/((\d+|\.)&#123;5,&#125;)/i),c=l&amp;&amp;parseInt(l[1].split(&quot;.&quot;).join(&quot;&quot;),10)&gt;=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&amp;&amp;d[1]&gt;534||c||(s=1);var u=1/s,m=r.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);m||(m=r.createElement(&quot;meta&quot;),m.setAttribute(&quot;name&quot;,&quot;viewport&quot;),r.head.appendChild(m)),m.setAttribute(&quot;content&quot;,&quot;width=device-width,user-scalable=no,initial-scale=&quot;+u+&quot;,maximum-scale=&quot;+u+&quot;,minimum-scale=&quot;+u),r.documentElement.style.fontSize=a/2*s*n+&quot;px&quot;&#125;,e.exports=t[&quot;default&quot;]&#125;]);  flex(100, 1);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这是阿里的高清方案布局代码有点是</p>
+<blockquote>
+<p>应用方便，布局简单</p>
+<ul>
+<li>因为比例是1rem = 100px,所以当我没测量的宽度为80px时，便可以写0.8rem，方便计算<br>该方法是根据dpr调整页面<ul>
+<li>不用在意1px问题，也不需要写meta的viewport了，会自动生成</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>注意 <strong>缺点</strong>： 与以前的方法不同，这个是<strong>屏幕越大，展示的元素越多</strong>，以前是<strong>屏幕越大，元素越大</strong></p>
+<ol start="2">
+<li>vw方式<br>vw和vh是css3中的新单位，都是相对于视窗大小来决定的</li>
+</ol>
+<p><strong>100vw=document.body.clientWidth</strong><br>也就是1vw=1%；<br>需要注意的是必须有meta标签的viewport<br>在实际使用中的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 比如设计稿是750的，那么1vm就是7.5，可以通过计算获取 --&gt;</span><br><span class="line">&lt;!-- 通过scss编译 --&gt;</span><br><span class="line">$base:750,</span><br><span class="line">@function vw($px,$base:750)&#123;</span><br><span class="line">    @return $px/$base*100vw</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 设定好了就不需要计算了，可以直接写测量值了 --&gt;</span><br><span class="line">比如宽度为200，高度为300，</span><br><span class="line"></span><br><span class="line">.box&#123;</span><br><span class="line">    width: vw(200);</span><br><span class="line">    height: vw(300);</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 最后编译以后展示 --&gt;</span><br><span class="line">.box&#123;</span><br><span class="line">    width: 26.66667vw;</span><br><span class="line">    height: 40vw;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2018-8-2-更新"><a href="#2018-8-2-更新" class="headerlink" title="2018.8.2 更新"></a>2018.8.2 更新</h3><p>1 .最近看到一份<a href="http://hjingren.cn/2017/06/16/%E5%9F%BA%E4%BA%8Evue-cli%E9%85%8D%E7%BD%AE%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%87%AA%E9%80%82%E5%BA%94/" target="_blank" rel="noopener">基于vue-cli配置移动端自适应</a></p>
+<ol start="2">
+<li>这份文档的所介绍的基本步骤如下：</li>
+</ol>
+<ul>
+<li><p>首先安装lib-flexible</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 第一步 --&gt;</span><br><span class="line">npm install --save lib-flexible</span><br><span class="line">&lt;!-- 第二步 在main中使用 --&gt;</span><br><span class="line">import &apos;lib-flexible&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来需要安装px2rem-loader</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 第一步 --&gt;</span><br><span class="line">npm install px2rem-loader --S</span><br><span class="line">&lt;!-- 第二步 修改文件夹build下的utils.js--&gt;</span><br><span class="line">&lt;!-- 在cssloader下添加 --&gt;</span><br><span class="line"> const px2remLoader = &#123;</span><br><span class="line">    loader: &apos;px2rem-loader&apos;,</span><br><span class="line">    options: &#123;</span><br><span class="line">      remUnit: 75</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &lt;!-- 在函数 function generateLoaders下修改为 --&gt;</span><br><span class="line">  const loaders = options.usePostCSS ? [cssLoader, postcssLoader,px2remLoader] : [cssLoader,px2remLoader]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后重新启动vue即可以使用测量的宽度来些css样式：比如750宽度 写成750px;</p>
+</li>
+</ul>
+<ol start="3">
+<li>完成上述以后，还有一些bug处理</li>
+</ol>
+<ul>
+<li><p>在750px下，html的font-size的显示是54px;不能满足是75px的设定。此时可以修改原文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 找到node_modules下 &gt; lib-flexible &gt; flexible.js --&gt;</span><br><span class="line">&lt;!-- 修改其中的判断 --&gt;</span><br><span class="line">    function refreshRem()&#123;</span><br><span class="line">        var width = docEl.getBoundingClientRect().width;</span><br><span class="line">        // if (width / dpr &gt; 540) &#123;</span><br><span class="line">        //     width = 540 * dpr;</span><br><span class="line">        // &#125;</span><br><span class="line">        var rem = width / 10;</span><br><span class="line">        docEl.style.fontSize = rem + &apos;px&apos;;</span><br><span class="line">        flexible.rem = win.rem = rem;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;!-- 这样就会显示正常 --&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果不想转化成rem，就像用px怎么解决</p>
+<blockquote>
+<p>只要在后面写上注释 /<em> no</em>/就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如此时就不会转换成rem</span><br><span class="line">height: 86px; /* no*/</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>最后需要注意的是css样式只有在正常写的情况下在会转换，在行内和@import下，不会转换</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/移动端，CSS/" rel="tag"><i class="fa fa-tag"></i> 移动端，CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/30/vue实现URL不变的情况下，数据更新/" rel="next" title="vue实现URL不变的情况下，数据更新">
+                <i class="fa fa-chevron-left"></i> vue实现URL不变的情况下，数据更新
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/懒加载和预加载链接/" rel="prev" title="懒加载和预加载链接">
+                懒加载和预加载链接 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://img.faloo.com/NovelNode/0x0/1/1085/1085899.gif" alt="Sonho Creek">
+            
+              <p class="site-author-name" itemprop="name">Sonho Creek</p>
+              <p class="site-description motion-element" itemprop="description">个人笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qin-mx" target="_blank" title="Github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/user" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Coding</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014344991049250a2c80ec84cb4861bbd1d9b2c0c2850e000" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://panjiachen.github.io/vue-element-admin-site/#/zh-cn/import1" title="panjiachen" target="_blank">panjiachen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jspang.com/" title="jspan" target="_blank">jspan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jqhtml.com/15759.html" title="jqhtml" target="_blank">jqhtml</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#接触过的适配方式"><span class="nav-number">1.</span> <span class="nav-text">接触过的适配方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种方式-媒体查询"><span class="nav-number">1.1.</span> <span class="nav-text">第一种方式 媒体查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种方式-js控制"><span class="nav-number">1.2.</span> <span class="nav-text">第二种方式 js控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他成熟好用的方法"><span class="nav-number">1.3.</span> <span class="nav-text">其他成熟好用的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后，一般来讲不推荐字体也使用rem；现在使用rem-flexible方法或者flex布局时最好的方法了"><span class="nav-number">1.4.</span> <span class="nav-text">最后，一般来讲不推荐字体也使用rem；现在使用rem + flexible方法或者flex布局时最好的方法了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动端一像素问题"><span class="nav-number">1.5.</span> <span class="nav-text">移动端一像素问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最近更新"><span class="nav-number">2.</span> <span class="nav-text">最近更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-8-2-更新"><span class="nav-number">3.</span> <span class="nav-text">2018.8.2 更新</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sonho Creek</span>
+
+  
+</div>
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共52.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":50,"height":100},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

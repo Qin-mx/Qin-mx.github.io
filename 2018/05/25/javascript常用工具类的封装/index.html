@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://xxxxxxx.xxx"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Sonho Creek" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="javascript 的一些封装来源链接 1. 类型判断">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript常用工具类的封装">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/javascript常用工具类的封装/index.html">
+<meta property="og:site_name" content="Sonho Creek">
+<meta property="og:description" content="javascript 的一些封装来源链接 1. 类型判断">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T03:05:18.774Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript常用工具类的封装">
+<meta name="twitter:description" content="javascript 的一些封装来源链接 1. 类型判断">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/25/javascript常用工具类的封装/">
+
+
+
+
+
+  <title>javascript常用工具类的封装 | Sonho Creek</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sonho Creek</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Casual notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            历程
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/javascript常用工具类的封装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sonho Creek">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://img.faloo.com/NovelNode/0x0/1/1085/1085899.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sonho Creek">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">javascript常用工具类的封装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-25T10:05:37+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,401
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  24
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="javascript-的一些封装"><a href="#javascript-的一些封装" class="headerlink" title="javascript 的一些封装"></a>javascript 的一些封装</h3><p><a href="http://dzblog.cn/article/5a6f48afad4db304be1e7a5f" target="_blank" rel="noopener">来源链接</a></p>
+<h4 id="1-类型判断"><a href="#1-类型判断" class="headerlink" title="1. 类型判断"></a>1. 类型判断</h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line">// 使用typeOf可以精确的判断基本数据类型，但不能精确判断其他类型</span><br><span class="line">// Object.prototype.String.call()可以</span><br><span class="line">// 判断是否是字符串</span><br><span class="line">function isString (val)&#123;</span><br><span class="line">    return Object.prototype.toString.call(val).slice(8,-1) === &apos;String&apos;</span><br><span class="line">&#125;</span><br><span class="line">// 判断是否是数字类型</span><br><span class="line">function isNumber (val)&#123;</span><br><span class="line">    return Object.prototype.toString.call(val).slice(8, -1) === &apos;Number&apos;</span><br><span class="line">&#125;</span><br><span class="line">// 判断是否是数组类型</span><br><span class="line">function isArray (val)&#123;</span><br><span class="line">    return Object.prototypr.toString.call(val).slice(8, -1) === &apos;Array&apos;</span><br><span class="line">&#125;</span><br><span class="line">// 判断是否是对象类型</span><br><span class="line">function isObject (val)&#123;</span><br><span class="line">    return Object.prototypr.toString.call(val).slice(8, -1) === &apos;Object&apos;</span><br><span class="line">&#125;</span><br><span class="line">// 判断是否是布尔类型</span><br><span class="line">function isBoolean (val)&#123;</span><br><span class="line">    return Object.prototype.toString.call(val).slice(8, -1) === &apos;Boolean&apos;</span><br><span class="line">&#125;</span><br><span class="line">// 判断是否是时间</span><br><span class="line">function isDate (val)&#123;</span><br><span class="line">    return Object.prototypr.toString.call(val).slice(8, -1) === &apos;Date&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 判断是否是函数</span><br><span class="line">function isFunction(val)&#123;</span><br><span class="line">    return Object.prototype.toString.call(val).slice(8, -1) === &apos;function&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 是否为null</span><br><span class="line">function isNUll(val)&#123;</span><br><span class="line">    return Object.prototype.toString.call(val).solice(8, -1) === &apos;Null&apos;</span><br><span class="line">&#125;</span><br><span class="line">// 是否为undefind</span><br><span class="line">function isUndefined (val)&#123;</span><br><span class="line">    return Object.prototype.toString.call(val).solice(8, -1) === &apos;Undefined&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 返回false</span><br><span class="line">function isFalse(val)&#123;</span><br><span class="line">    if( val == &apos;&apos; || val == undefined || val == &apos;null&apos; || val == &apos;undefined&apos; ||  val == 0 || val == false || val == NaN) return true</span><br><span class="line">    else return true</span><br><span class="line">&#125;</span><br><span class="line">// 返回true</span><br><span class="line">function isTrue (val) &#123;</span><br><span class="line">    return !this.isFalse(val)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 判断是ios系统</span><br><span class="line">function isIos()&#123;</span><br><span class="line">    var u = navigator.userAgent;</span><br><span class="line">    if(u.indexOf(&apos;Android&apos;) &gt; -1 || u.indexOf(&apos;Linux&apos;) &gt; -1) &#123; // 安卓手机</span><br><span class="line">        return false</span><br><span class="line">    &#125; else if ( u.indexOf(&apos;iPhone&apos;) &gt; -1)&#123; //苹果手机</span><br><span class="line">        return true</span><br><span class="line">    &#125; else if (u.indexOf(&apos;iPad&apos;) &gt; -1) &#123;//iPad</span><br><span class="line">        return false</span><br><span class="line">    &#125; else if (u.indexOf(&apos;Windows Phone&apos;) &gt; -1) &#123;//winphone手机</span><br><span class="line">        return false</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 判断是否是pc</span><br><span class="line">function isPc()&#123;</span><br><span class="line">    var userAgentInfo = navigator.userAgent;</span><br><span class="line">    var Agents = [&quot;Android&quot;, &quot;iPhone&quot;,&quot;SymbianOS&quot;, &quot;Windows Phone&quot;,&quot;iPad&quot;, &quot;iPod&quot;];</span><br><span class="line">    var flag = true;</span><br><span class="line">    for ( let i in Agents)&#123;</span><br><span class="line">        if(userAgentInfo.indexOf(Agents[i]) &gt; 0 )&#123;</span><br><span class="line">            flag = false</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return flag</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 判断使用的浏览器</span><br><span class="line">function browserType()&#123;</span><br><span class="line">    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串</span><br><span class="line">    var isOpera = userAgent.indexOf(&quot;Opera&quot;) &gt; -1; //判断是否Opera浏览器</span><br><span class="line">    var isIE = userAgent.indexOf(&quot;compatible&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;MSIE&quot;) &gt; -1 &amp;&amp; !isOpera; //判断是否IE浏览器</span><br><span class="line">    var isEdge = userAgent.indexOf(&quot;Edge&quot;) &gt; -1; //判断是否IE的Edge浏览器</span><br><span class="line">    var isFF = userAgent.indexOf(&quot;Firefox&quot;) &gt; -1; //判断是否Firefox浏览器</span><br><span class="line">    var isSafari = userAgent.indexOf(&quot;Safari&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;Chrome&quot;) == -1; //判断是否Safari浏览器</span><br><span class="line">    var isChrome = userAgent.indexOf(&quot;Chrome&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;Safari&quot;) &gt; -1; //判断Chrome浏览器</span><br><span class="line">    if (isIE) &#123;</span><br><span class="line">        var reIE = new RegExp(&quot;MSIE (\\d+\\.\\d+);&quot;);</span><br><span class="line">        reIE.test(userAgent);</span><br><span class="line">        var fIEVersion = parseFloat(RegExp[&quot;$1&quot;]);</span><br><span class="line">        if(fIEVersion == 7) return &quot;IE7&quot;</span><br><span class="line">        else if(fIEVersion == 8) return &quot;IE8&quot;;</span><br><span class="line">        else if(fIEVersion == 9) return &quot;IE9&quot;;</span><br><span class="line">        else if(fIEVersion == 10) return &quot;IE10&quot;;</span><br><span class="line">        else if(fIEVersion == 11) return &quot;IE11&quot;;</span><br><span class="line">        else return &quot;IE7以下&quot;//IE版本过低</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (isFF) return &quot;FF&quot;;</span><br><span class="line">    if (isOpera) return &quot;Opera&quot;;</span><br><span class="line">    if (isEdge) return &quot;Edge&quot;;</span><br><span class="line">    if (isSafari) return &quot;Safari&quot;;</span><br><span class="line">    if (isChrome) return &quot;Chrome&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function checkStr (str, type) &#123;</span><br><span class="line">    switch (type) &#123;</span><br><span class="line">        case &apos;phone&apos;:   //手机号码</span><br><span class="line">            return /^1[3|4|5|6|7|8][0-9]&#123;9&#125;$/.test(str);</span><br><span class="line">        case &apos;tel&apos;:     //座机</span><br><span class="line">            return /^(0\d&#123;2,3&#125;-\d&#123;7,8&#125;)(-\d&#123;1,4&#125;)?$/.test(str);</span><br><span class="line">        case &apos;card&apos;:    //身份证</span><br><span class="line">            return /(^\d&#123;15&#125;$)|(^\d&#123;18&#125;$)|(^\d&#123;17&#125;(\d|X|x)$)/.test(str);</span><br><span class="line">        case &apos;pwd&apos;:     //密码以字母开头，长度在6~18之间，只能包含字母、数字和下划线</span><br><span class="line">            return /^[a-zA-Z]\w&#123;5,17&#125;$/.test(str)</span><br><span class="line">        case &apos;postal&apos;:  //邮政编码</span><br><span class="line">            return /[1-9]\d&#123;5&#125;(?!\d)/.test(str);</span><br><span class="line">        case &apos;QQ&apos;:      //QQ号</span><br><span class="line">            return /^[1-9][0-9]&#123;4,9&#125;$/.test(str);</span><br><span class="line">        case &apos;email&apos;:   //邮箱</span><br><span class="line">            return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);</span><br><span class="line">        case &apos;money&apos;:   //金额(小数点2位)</span><br><span class="line">            return /^\d*(?:\.\d&#123;0,2&#125;)?$/.test(str);</span><br><span class="line">        case &apos;URL&apos;:     //网址</span><br><span class="line">            return /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/.test(str)</span><br><span class="line">        case &apos;IP&apos;:      //IP</span><br><span class="line">            return /((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.)&#123;3&#125;(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))/.test(str);</span><br><span class="line">        case &apos;date&apos;:    //日期时间</span><br><span class="line">            return /^(\d&#123;4&#125;)\-(\d&#123;2&#125;)\-(\d&#123;2&#125;) (\d&#123;2&#125;)(?:\:\d&#123;2&#125;|:(\d&#123;2&#125;):(\d&#123;2&#125;))$/.test(str) || /^(\d&#123;4&#125;)\-(\d&#123;2&#125;)\-(\d&#123;2&#125;)$/.test(str)</span><br><span class="line">        case &apos;number&apos;:  //数字</span><br><span class="line">            return /^[0-9]$/.test(str);</span><br><span class="line">        case &apos;english&apos;: //英文</span><br><span class="line">            return /^[a-zA-Z]+$/.test(str);</span><br><span class="line">        case &apos;chinese&apos;: //中文</span><br><span class="line">            return /^[\u4E00-\u9FA5]+$/.test(str);</span><br><span class="line">        case &apos;lower&apos;:   //小写</span><br><span class="line">            return /^[a-z]+$/.test(str);</span><br><span class="line">        case &apos;upper&apos;:   //大写</span><br><span class="line">            return /^[A-Z]+$/.test(str);</span><br><span class="line">        case &apos;HTML&apos;:    //HTML标记</span><br><span class="line">            return /&lt;(&quot;[^&quot;]*&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&gt;])*&gt;/.test(str);</span><br><span class="line">        default:</span><br><span class="line">            return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 严格的身份证校验</span><br><span class="line">function isCardID(sId) &#123;</span><br><span class="line">    if (!/(^\d&#123;15&#125;$)|(^\d&#123;17&#125;(\d|X|x)$)/.test(sId)) &#123;</span><br><span class="line">        alert(&apos;你输入的身份证长度或格式错误&apos;)</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    //身份证城市</span><br><span class="line">    var aCity=&#123;11:&quot;北京&quot;,12:&quot;天津&quot;,13:&quot;河北&quot;,14:&quot;山西&quot;,15:&quot;内蒙古&quot;,21:&quot;辽宁&quot;,22:&quot;吉林&quot;,23:&quot;黑龙江&quot;,31:&quot;上海&quot;,32:&quot;江苏&quot;,33:&quot;浙江&quot;,34:&quot;安徽&quot;,35:&quot;福建&quot;,36:&quot;江西&quot;,37:&quot;山东&quot;,41:&quot;河南&quot;,42:&quot;湖北&quot;,43:&quot;湖南&quot;,44:&quot;广东&quot;,45:&quot;广西&quot;,46:&quot;海南&quot;,50:&quot;重庆&quot;,51:&quot;四川&quot;,52:&quot;贵州&quot;,53:&quot;云南&quot;,54:&quot;西藏&quot;,61:&quot;陕西&quot;,62:&quot;甘肃&quot;,63:&quot;青海&quot;,64:&quot;宁夏&quot;,65:&quot;新疆&quot;,71:&quot;台湾&quot;,81:&quot;香港&quot;,82:&quot;澳门&quot;,91:&quot;国外&quot;&#125;;</span><br><span class="line">    if(!aCity[parseInt(sId.substr(0,2))]) &#123; </span><br><span class="line">        alert(&apos;你的身份证地区非法&apos;)</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 出生日期验证</span><br><span class="line">    var sBirthday=(sId.substr(6,4)+&quot;-&quot;+Number(sId.substr(10,2))+&quot;-&quot;+Number(sId.substr(12,2))).replace(/-/g,&quot;/&quot;),</span><br><span class="line">        d = new Date(sBirthday)</span><br><span class="line">    if(sBirthday != (d.getFullYear()+&quot;/&quot;+ (d.getMonth()+1) + &quot;/&quot; + d.getDate())) &#123;</span><br><span class="line">        alert(&apos;身份证上的出生日期非法&apos;)</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 身份证号码校验</span><br><span class="line">    var sum = 0,</span><br><span class="line">        weights =  [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],</span><br><span class="line">        codes = &quot;10X98765432&quot;</span><br><span class="line">    for (var i = 0; i &lt; sId.length - 1; i++) &#123;</span><br><span class="line">        sum += sId[i] * weights[i];</span><br><span class="line">    &#125;</span><br><span class="line">    var last = codes[sum % 11]; //计算出来的最后一位身份证号码</span><br><span class="line">    if (sId[sId.length-1] != last) &#123; </span><br><span class="line">        alert(&apos;你输入的身份证号非法&apos;)</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-时间函数封装"><a href="#2-时间函数封装" class="headerlink" title="2. 时间函数封装"></a>2. 时间函数封装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br></pre></td><td class="code"><pre><span class="line">// 格式化时间</span><br><span class="line">// 过滤日期</span><br><span class="line">/**</span><br><span class="line"> * 格式化时间</span><br><span class="line"> * </span><br><span class="line"> * @param  &#123;time&#125; 时间</span><br><span class="line"> * @param  &#123;cFormat&#125; 格式</span><br><span class="line"> * @return &#123;String&#125; 字符串</span><br><span class="line"> *</span><br><span class="line"> * @example formatTime(&apos;2018-1-29&apos;, &apos;&#123;y&#125;/&#123;m&#125;/&#123;d&#125; &#123;h&#125;:&#123;i&#125;:&#123;s&#125;&apos;) // -&gt; 2018/01/29 00:00:00</span><br><span class="line"> */</span><br><span class="line">function parseTime(time, cFormat) &#123;</span><br><span class="line">    if (arguments.length === 0) &#123;</span><br><span class="line">      return null</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    if ((time + &apos;&apos;).length === 10) &#123;</span><br><span class="line">      time = +time * 1000</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    const format = cFormat || &apos;&#123;y&#125;-&#123;m&#125;-&#123;d&#125; &#123;h&#125;:&#123;i&#125;:&#123;s&#125;&apos;</span><br><span class="line">    let date</span><br><span class="line">    if (typeof time === &apos;object&apos;) &#123;</span><br><span class="line">      date = time</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      date = new Date(parseInt(time))</span><br><span class="line">    &#125;</span><br><span class="line">    const formatObj = &#123;</span><br><span class="line">      y: date.getFullYear(),</span><br><span class="line">      m: date.getMonth() + 1,</span><br><span class="line">      d: date.getDate(),</span><br><span class="line">      h: date.getHours(),</span><br><span class="line">      i: date.getMinutes(),</span><br><span class="line">      s: date.getSeconds(),</span><br><span class="line">      a: date.getDay()</span><br><span class="line">    &#125;</span><br><span class="line">    const time_str = format.replace(/&#123;(y|m|d|h|i|s|a)+&#125;/g, (result, key) =&gt; &#123;</span><br><span class="line">      let value = formatObj[key]</span><br><span class="line">      if (key === &apos;a&apos;) return [&apos;一&apos;, &apos;二&apos;, &apos;三&apos;, &apos;四&apos;, &apos;五&apos;, &apos;六&apos;, &apos;日&apos;][value - 1]</span><br><span class="line">      if (result.length &gt; 0 &amp;&amp; value &lt; 10) &#123;</span><br><span class="line">        value = &apos;0&apos; + value</span><br><span class="line">      &#125;</span><br><span class="line">      return value || 0</span><br><span class="line">    &#125;)</span><br><span class="line">    return time_str</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">/**</span><br><span class="line"> * 返回指定长度的月份集合</span><br><span class="line"> * </span><br><span class="line"> * @param  &#123;time&#125; 时间</span><br><span class="line"> * @param  &#123;len&#125; 长度</span><br><span class="line"> * @param  &#123;direction&#125; 方向：  1: 前几个月;  2: 后几个月;  3:前后几个月  默认 3</span><br><span class="line"> * @return &#123;Array&#125; 数组</span><br><span class="line"> * </span><br><span class="line"> * @example   getMonths(&apos;2018-1-29&apos;, 6, 1)  // -&gt;  [&quot;2018-1&quot;, &quot;2017-12&quot;, &quot;2017-11&quot;, &quot;2017-10&quot;, &quot;2017-9&quot;, &quot;2017-8&quot;, &quot;2017-7&quot;]</span><br><span class="line"> */</span><br><span class="line">function getMonths(time, len, direction) &#123;</span><br><span class="line">    var mm = new Date(time).getMonth(),</span><br><span class="line">        yy = new Date(time).getFullYear(),</span><br><span class="line">        direction = isNaN(direction) ? 3 : direction,</span><br><span class="line">        index = mm;</span><br><span class="line">    var cutMonth = function(index) &#123;</span><br><span class="line">        if ( index &lt;= len &amp;&amp; index &gt;= -len) &#123;</span><br><span class="line">            return direction === 1 ? formatPre(index).concat(cutMonth(++index)):</span><br><span class="line">                direction === 2 ? formatNext(index).concat(cutMonth(++index)):formatCurr(index).concat(cutMonth(++index))</span><br><span class="line">        &#125;</span><br><span class="line">        return []</span><br><span class="line">    &#125;</span><br><span class="line">    var formatNext = function(i) &#123;</span><br><span class="line">        var y = Math.floor(i/12),</span><br><span class="line">            m = i%12</span><br><span class="line">        return [yy+y + &apos;-&apos; + (m+1)]</span><br><span class="line">    &#125;</span><br><span class="line">    var formatPre = function(i) &#123;</span><br><span class="line">        var y = Math.ceil(i/12),</span><br><span class="line">            m = i%12</span><br><span class="line">        m = m===0 ? 12 : m</span><br><span class="line">        return [yy-y + &apos;-&apos; + (13 - m)]</span><br><span class="line">    &#125;</span><br><span class="line">    var formatCurr = function(i) &#123;</span><br><span class="line">        var y = Math.floor(i/12),</span><br><span class="line">            yNext = Math.ceil(i/12),</span><br><span class="line">            m = i%12,</span><br><span class="line">            mNext = m===0 ? 12 : m</span><br><span class="line">        return [yy-yNext + &apos;-&apos; + (13 - mNext),yy+y + &apos;-&apos; + (m+1)]</span><br><span class="line">    &#125;</span><br><span class="line">    // 数组去重</span><br><span class="line">    var unique = function(arr) &#123;</span><br><span class="line">        if ( Array.hasOwnProperty(&apos;from&apos;) ) &#123;</span><br><span class="line">            return Array.from(new Set(arr));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            var n = &#123;&#125;,r=[]; </span><br><span class="line">            for(var i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">                if (!n[arr[i]])&#123;</span><br><span class="line">                    n[arr[i]] = true; </span><br><span class="line">                    r.push(arr[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return r;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return direction !== 3 ? cutMonth(index) : unique(cutMonth(index).sort(function(t1, t2)&#123;</span><br><span class="line">        return new Date(t1).getTime() - new Date(t2).getTime()</span><br><span class="line">    &#125;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 返回指定长度的天数集合</span><br><span class="line"> * </span><br><span class="line"> * @param  &#123;time&#125; 时间</span><br><span class="line"> * @param  &#123;len&#125; 长度</span><br><span class="line"> * @param  &#123;direction&#125; 方向： 1: 前几天;  2: 后几天;  3:前后几天  默认 3</span><br><span class="line"> * @return &#123;Array&#125; 数组</span><br><span class="line"> *</span><br><span class="line"> * @example date.getDays(&apos;2018-1-29&apos;, 6) // -&gt; [&quot;2018-1-26&quot;, &quot;2018-1-27&quot;, &quot;2018-1-28&quot;, &quot;2018-1-29&quot;, &quot;2018-1-30&quot;, &quot;2018-1-31&quot;, &quot;2018-2-1&quot;]</span><br><span class="line"> */</span><br><span class="line">function getDays(time, len, diretion) &#123;</span><br><span class="line">    var tt = new Date(time)</span><br><span class="line">    var getDay = function(day) &#123;</span><br><span class="line">        var t = new Date(time)</span><br><span class="line">        t.setDate(t.getDate() + day)</span><br><span class="line">        var m = t.getMonth()+1</span><br><span class="line">        return t.getFullYear()+&apos;-&apos;+m+&apos;-&apos;+t.getDate()</span><br><span class="line">    &#125;</span><br><span class="line">    var arr = []</span><br><span class="line">    if (diretion === 1) &#123;</span><br><span class="line">        for (var i = 1; i &lt;= len; i++) &#123;</span><br><span class="line">            arr.unshift(getDay(-i))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else if(diretion === 2) &#123;</span><br><span class="line">        for (var i = 1; i &lt;= len; i++) &#123;</span><br><span class="line">            arr.push(getDay(i))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        for (var i = 1; i &lt;= len; i++) &#123;</span><br><span class="line">            arr.unshift(getDay(-i))</span><br><span class="line">        &#125;</span><br><span class="line">        arr.push(tt.getFullYear()+&apos;-&apos;+(tt.getMonth()+1)+&apos;-&apos;+tt.getDate())</span><br><span class="line">        for (var i = 1; i &lt;= len; i++) &#123;</span><br><span class="line">            arr.push(getDay(i))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return diretion === 1 ? arr.concat([tt.getFullYear()+&apos;-&apos;+(tt.getMonth()+1)+&apos;-&apos;+tt.getDate()]) : </span><br><span class="line">        diretion === 2 ? [tt.getFullYear()+&apos;-&apos;+(tt.getMonth()+1)+&apos;-&apos;+tt.getDate()].concat(arr) : arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @param  &#123;s&#125; 秒数</span><br><span class="line"> * @return &#123;String&#125; 字符串 </span><br><span class="line"> *</span><br><span class="line"> * @example formatHMS(3610) // -&gt; 1h0m10s</span><br><span class="line"> */</span><br><span class="line">function formatHMS (s) &#123;</span><br><span class="line">    var str = &apos;&apos;</span><br><span class="line">    if (s &gt; 3600) &#123;</span><br><span class="line">        str = Math.floor(s/3600)+&apos;h&apos;+Math.floor(s%3600/60)+&apos;m&apos;+s%60+&apos;s&apos;</span><br><span class="line">    &#125;else if(s &gt; 60) &#123;</span><br><span class="line">        str = Math.floor(s/60)+&apos;m&apos;+s%60+&apos;s&apos;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        str = s%60+&apos;s&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    return str</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*获取某月有多少天*/</span><br><span class="line">function getMonthOfDay (time) &#123;</span><br><span class="line">    var date = new Date(time)</span><br><span class="line">    var year = date.getFullYear()</span><br><span class="line">    var mouth = date.getMonth() + 1</span><br><span class="line">    var days</span><br><span class="line"></span><br><span class="line">    //当月份为二月时，根据闰年还是非闰年判断天数</span><br><span class="line">    if (mouth == 2) &#123;</span><br><span class="line">        days = year % 4 == 0 ? 29 : 28</span><br><span class="line">    &#125; else if (mouth == 1 || mouth == 3 || mouth == 5 || mouth == 7 || mouth == 8 || mouth == 10 || mouth == 12) &#123;</span><br><span class="line">        //月份为：1,3,5,7,8,10,12 时，为大月.则天数为31；</span><br><span class="line">        days = 31</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //其他月份，天数为：30.</span><br><span class="line">        days = 30</span><br><span class="line">    &#125;</span><br><span class="line">    return days</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*获取某年有多少天*/</span><br><span class="line">function getYearOfDay (time) &#123;</span><br><span class="line">    var firstDayYear = this.getFirstDayOfYear(time);</span><br><span class="line">    var lastDayYear = this.getLastDayOfYear(time);</span><br><span class="line">    var numSecond = (new Date(lastDayYear).getTime() - new Date(firstDayYear).getTime())/1000;</span><br><span class="line">    return Math.ceil(numSecond/(24*3600));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*获取某年的第一天*/</span><br><span class="line">function getFirstDayOfYear (time) &#123;</span><br><span class="line">    var year = new Date(time).getFullYear();</span><br><span class="line">    return year + &quot;-01-01 00:00:00&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*获取某年最后一天*/</span><br><span class="line">function getLastDayOfYear (time) &#123;</span><br><span class="line">    var year = new Date(time).getFullYear();</span><br><span class="line">    var dateString = year + &quot;-12-01 00:00:00&quot;;</span><br><span class="line">    var endDay = this.getMonthOfDay(dateString);</span><br><span class="line">    return year + &quot;-12-&quot; + endDay + &quot; 23:59:59&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*获取某个日期是当年中的第几天*/</span><br><span class="line">function getDayOfYear (time) &#123;</span><br><span class="line">    var firstDayYear = this.getFirstDayOfYear(time);</span><br><span class="line">    var numSecond = (new Date(time).getTime() - new Date(firstDayYear).getTime())/1000;</span><br><span class="line">    return Math.ceil(numSecond/(24*3600));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*获取某个日期在这一年的第几周*/</span><br><span class="line">function getDayOfYearWeek (time) &#123;</span><br><span class="line">    var numdays = this.getDayOfYear(time);</span><br><span class="line">    return Math.ceil(numdays / 7);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-数组操作"><a href="#3-数组操作" class="headerlink" title="3.数组操作"></a>3.数组操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">// 判断元素是否在数组中</span><br><span class="line">container( arr,val)&#123;</span><br><span class="line">    return arr.indexOf(val) != -1 ?true:false</span><br><span class="line">&#125;</span><br><span class="line">// 排序</span><br><span class="line">/**</span><br><span class="line"> * @param  &#123;arr&#125; 数组</span><br><span class="line"> * @param  &#123;type&#125; 1：从小到大   2：从大到小   3：随机</span><br><span class="line"> * @return &#123;Array&#125;</span><br><span class="line"> */</span><br><span class="line">function sort (arr, type = 1) &#123;</span><br><span class="line">    return arr.sort( (a, b) =&gt; &#123;</span><br><span class="line">        switch(type) &#123;</span><br><span class="line">            case 1:</span><br><span class="line">                return a - b;</span><br><span class="line">            case 2:</span><br><span class="line">                return b - a;</span><br><span class="line">            case 3:</span><br><span class="line">                return Math.random() - 0.5;</span><br><span class="line">            default:</span><br><span class="line">                return arr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 去重</span><br><span class="line">function unique (arr)&#123;</span><br><span class="line">    if( Array.hasOwnPrototypr(&apos;from&apos;))&#123;//hasOwnProperty用来判断一个对象是否有你给出名称的属性或对象</span><br><span class="line">        return Array.from(new Set(arr))</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        var n = &#123;&#125;,r =[];</span><br><span class="line">        for( var i = 0;i&lt;arr.length;i++)&#123;</span><br><span class="line">            if( !n[arr[i]] )&#123;</span><br><span class="line">                n[arr[i]] = true;</span><br><span class="line">                r.push(arr[i])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return r</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 数组合并</span><br><span class="line">function union (a,b)&#123;</span><br><span class="line">    var nweArr =a.concat(n);</span><br><span class="line">    return this.unique(newArr) // 调用这个方法去重</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 删除其中一个元素</span><br><span class="line">function remove(arr,ele)&#123;</span><br><span class="line">    var index = arr.indexOf(ele); // 当前要删除的元素所在的下标</span><br><span class="line">    if( index &gt; -1)&#123;</span><br><span class="line">        arr.splice(index, 1)</span><br><span class="line">    &#125;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*将类数组转换为数组的方法*/</span><br><span class="line">function formArray (ary) &#123;</span><br><span class="line">    var arr = [];</span><br><span class="line">    if(Array.isArray(ary)) &#123;</span><br><span class="line">        arr = ary;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        arr = Array.prototype.slice.call(ary);</span><br><span class="line">    &#125;;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 最大值</span><br><span class="line">function max(arr)&#123;</span><br><span class="line">    return Math.max.apply(null,arr)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 最小值</span><br><span class="line">function min(arr)&#123;</span><br><span class="line">    return Math.min.apply(null,arr)</span><br><span class="line">&#125;</span><br><span class="line">// 求和</span><br><span class="line">function sum(arr)&#123;</span><br><span class="line">    return arr.reduce( (pre, cur) =&gt; &#123;</span><br><span class="line">        return pre +cur</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">// 平均值</span><br><span class="line"></span><br><span class="line">function average( arr)&#123;</span><br><span class="line">    return this.sum(arr)/arr.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-String-字符串操作"><a href="#4-String-字符串操作" class="headerlink" title="4. String 字符串操作"></a>4. String 字符串操作</h4><p>去掉空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- type 1 所有 2 前后 3 前 4 后 --&gt;</span><br><span class="line">trim( str, type)&#123;</span><br><span class="line">    type = type || 1</span><br><span class="line">    switch (type) &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            return str.replace(/\s+/g, &quot;&quot;);</span><br><span class="line">        case 2:</span><br><span class="line">            return str.replace(/(^\s*)|(\s*$)/g, &quot;&quot;);</span><br><span class="line">        case 3:</span><br><span class="line">            return str.replace(/(^\s*)/g, &quot;&quot;);</span><br><span class="line">        case 4:</span><br><span class="line">            return str.replace(/(\s*$)/g, &quot;&quot;);</span><br><span class="line">        default:</span><br><span class="line">            return str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>大小写转化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- type 1 首字母大写 2 首字母小写 3 大小写转换 4 全部大写 5 全部小写 --&gt;</span><br><span class="line">changeCase (str, type) &#123;</span><br><span class="line">    type = type || 4</span><br><span class="line">    switch (type) &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            return str.replace(/\b\w+\b/g, function (word) &#123;</span><br><span class="line">                return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();</span><br><span class="line"></span><br><span class="line">            &#125;);</span><br><span class="line">        case 2:</span><br><span class="line">            return str.replace(/\b\w+\b/g, function (word) &#123;</span><br><span class="line">                return word.substring(0, 1).toLowerCase() + word.substring(1).toUpperCase();</span><br><span class="line">            &#125;);</span><br><span class="line">        case 3:</span><br><span class="line">            return str.split(&apos;&apos;).map( function(word)&#123;</span><br><span class="line">                if (/[a-z]/.test(word)) &#123;</span><br><span class="line">                    return word.toUpperCase();</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    return word.toLowerCase()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).join(&apos;&apos;)</span><br><span class="line">        case 4:</span><br><span class="line">            return str.toUpperCase();</span><br><span class="line">        case 5:</span><br><span class="line">            return str.toLowerCase();</span><br><span class="line">        default:</span><br><span class="line">            return str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>检测密码强度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">checkPwd (str)&#123;</span><br><span class="line">    var lv = 0;</span><br><span class="line">    if( lv.length &lt; 6 )&#123;</span><br><span class="line">        return LV</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(/[0-9]/.test(str))&#123;</span><br><span class="line">        lv++</span><br><span class="line">    &#125;</span><br><span class="line">    if(/[a-z]/.test(str))&#123;</span><br><span class="line">        lv++</span><br><span class="line">    &#125;</span><br><span class="line">    if(/[A-Z]/.test(str))&#123;</span><br><span class="line">        lv++</span><br><span class="line">    &#125;</span><br><span class="line">    if(/[\.|-|_]/.test(str))&#123;</span><br><span class="line">        lv++</span><br><span class="line">    &#125;</span><br><span class="line">    return lv</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-Number"><a href="#5-Number" class="headerlink" title="5.Number"></a>5.Number</h4><p>随机数范围<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">random(min,max)&#123;</span><br><span class="line">    if(argument.length === 2)&#123;</span><br><span class="line">        return Math.floor(min + Math.random()*((max+1)-min)) // 因为是向下取值</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return null</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">random(min,max)&#123;</span><br><span class="line">    var range = max-min ;// 得到随机区间</span><br><span class="line">    var rand = Math.random() // 得到随机值</span><br><span class="line">    return (min + Math.round(rand*range))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>将阿拉伯数字翻译成中文大写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">numberToChinese (num) &#123;</span><br><span class="line">    var AA = new Array(&quot;零&quot;, &quot;一&quot;, &quot;二&quot;, &quot;三&quot;, &quot;四&quot;, &quot;五&quot;, &quot;六&quot;, &quot;七&quot;, &quot;八&quot;, &quot;九&quot;, &quot;十&quot;);</span><br><span class="line">    var BB = new Array(&quot;&quot;, &quot;十&quot;, &quot;百&quot;, &quot;仟&quot;, &quot;萬&quot;, &quot;億&quot;, &quot;点&quot;, &quot;&quot;);</span><br><span class="line">    var a = (&quot;&quot; + num).replace(/(^0*)/g, &quot;&quot;).split(&quot;.&quot;),</span><br><span class="line">        k = 0,</span><br><span class="line">        re = &quot;&quot;;</span><br><span class="line">    for(var i = a[0].length - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">        switch(k) &#123;</span><br><span class="line">            case 0:</span><br><span class="line">                re = BB[7] + re;</span><br><span class="line">                break;</span><br><span class="line">            case 4:</span><br><span class="line">                if(!new RegExp(&quot;0&#123;4&#125;//d&#123;&quot; + (a[0].length - i - 1) + &quot;&#125;$&quot;)</span><br><span class="line">                    .test(a[0]))</span><br><span class="line">                    re = BB[4] + re;</span><br><span class="line">                break;</span><br><span class="line">            case 8:</span><br><span class="line">                re = BB[5] + re;</span><br><span class="line">                BB[7] = BB[5];</span><br><span class="line">                k = 0;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        if(k % 4 == 2 &amp;&amp; a[0].charAt(i + 2) != 0 &amp;&amp; a[0].charAt(i + 1) == 0)</span><br><span class="line">            re = AA[0] + re;</span><br><span class="line">        if(a[0].charAt(i) != 0)</span><br><span class="line">            re = AA[a[0].charAt(i)] + BB[k % 4] + re;</span><br><span class="line">        k++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(a.length &gt; 1) // 加上小数部分(如果有小数部分)</span><br><span class="line">    &#123;</span><br><span class="line">        re += BB[6];</span><br><span class="line">        for(var i = 0; i &lt; a[1].length; i++)</span><br><span class="line">            re += AA[a[1].charAt(i)];</span><br><span class="line">    &#125;</span><br><span class="line">    if(re == &apos;一十&apos;)</span><br><span class="line">        re = &quot;十&quot;;</span><br><span class="line">    if(re.match(/^一/) &amp;&amp; re.length == 3)</span><br><span class="line">        re = re.replace(&quot;一&quot;, &quot;&quot;);</span><br><span class="line">    return re;</span><br></pre></td></tr></table></figure></p>
+<p>将数字转换成大写金额<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line">/*将数字转换为大写金额*/</span><br><span class="line">changeToChinese (Num) &#123;</span><br><span class="line">        //判断如果传递进来的不是字符的话转换为字符</span><br><span class="line">        if(typeof Num == &quot;number&quot;) &#123;</span><br><span class="line">            Num = new String(Num);</span><br><span class="line">        &#125;;</span><br><span class="line">        Num = Num.replace(/,/g, &quot;&quot;) //替换tomoney()中的“,”</span><br><span class="line">        Num = Num.replace(/ /g, &quot;&quot;) //替换tomoney()中的空格</span><br><span class="line">        Num = Num.replace(/￥/g, &quot;&quot;) //替换掉可能出现的￥字符</span><br><span class="line">        if(isNaN(Num)) &#123; //验证输入的字符是否为数字</span><br><span class="line">            //alert(&quot;请检查小写金额是否正确&quot;);</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;;</span><br><span class="line">        //字符处理完毕后开始转换，采用前后两部分分别转换</span><br><span class="line">        var part = String(Num).split(&quot;.&quot;);</span><br><span class="line">        var newchar = &quot;&quot;;</span><br><span class="line">        //小数点前进行转化</span><br><span class="line">        for(var i = part[0].length - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">            if(part[0].length &gt; 10) &#123;</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">                //若数量超过拾亿单位，提示</span><br><span class="line">            &#125;</span><br><span class="line">            var tmpnewchar = &quot;&quot;</span><br><span class="line">            var perchar = part[0].charAt(i);</span><br><span class="line">            switch(perchar) &#123;</span><br><span class="line">                case &quot;0&quot;:</span><br><span class="line">                    tmpnewchar = &quot;零&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;1&quot;:</span><br><span class="line">                    tmpnewchar = &quot;壹&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;2&quot;:</span><br><span class="line">                    tmpnewchar = &quot;贰&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;3&quot;:</span><br><span class="line">                    tmpnewchar = &quot;叁&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;4&quot;:</span><br><span class="line">                    tmpnewchar = &quot;肆&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;5&quot;:</span><br><span class="line">                    tmpnewchar = &quot;伍&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;6&quot;:</span><br><span class="line">                    tmpnewchar = &quot;陆&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;7&quot;:</span><br><span class="line">                    tmpnewchar = &quot;柒&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;8&quot;:</span><br><span class="line">                    tmpnewchar = &quot;捌&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">                case &quot;9&quot;:</span><br><span class="line">                    tmpnewchar = &quot;玖&quot; + tmpnewchar;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            switch(part[0].length - i - 1) &#123;</span><br><span class="line">                case 0:</span><br><span class="line">                    tmpnewchar = tmpnewchar + &quot;元&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 1:</span><br><span class="line">                    if(perchar != 0) tmpnewchar = tmpnewchar + &quot;拾&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    if(perchar != 0) tmpnewchar = tmpnewchar + &quot;佰&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 3:</span><br><span class="line">                    if(perchar != 0) tmpnewchar = tmpnewchar + &quot;仟&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 4:</span><br><span class="line">                    tmpnewchar = tmpnewchar + &quot;万&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 5:</span><br><span class="line">                    if(perchar != 0) tmpnewchar = tmpnewchar + &quot;拾&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 6:</span><br><span class="line">                    if(perchar != 0) tmpnewchar = tmpnewchar + &quot;佰&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 7:</span><br><span class="line">                    if(perchar != 0) tmpnewchar = tmpnewchar + &quot;仟&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 8:</span><br><span class="line">                    tmpnewchar = tmpnewchar + &quot;亿&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                case 9:</span><br><span class="line">                    tmpnewchar = tmpnewchar + &quot;拾&quot;;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            var newchar = tmpnewchar + newchar;</span><br><span class="line">        &#125;</span><br><span class="line">        //小数点之后进行转化</span><br><span class="line">        if(Num.indexOf(&quot;.&quot;) != -1) &#123;</span><br><span class="line">            if(part[1].length &gt; 2) &#123;</span><br><span class="line">                // alert(&quot;小数点之后只能保留两位,系统将自动截断&quot;);</span><br><span class="line">                part[1] = part[1].substr(0, 2)</span><br><span class="line">            &#125;</span><br><span class="line">            for(i = 0; i &lt; part[1].length; i++) &#123;</span><br><span class="line">                tmpnewchar = &quot;&quot;</span><br><span class="line">                perchar = part[1].charAt(i)</span><br><span class="line">                switch(perchar) &#123;</span><br><span class="line">                    case &quot;0&quot;:</span><br><span class="line">                        tmpnewchar = &quot;零&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;1&quot;:</span><br><span class="line">                        tmpnewchar = &quot;壹&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;2&quot;:</span><br><span class="line">                        tmpnewchar = &quot;贰&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;3&quot;:</span><br><span class="line">                        tmpnewchar = &quot;叁&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;4&quot;:</span><br><span class="line">                        tmpnewchar = &quot;肆&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;5&quot;:</span><br><span class="line">                        tmpnewchar = &quot;伍&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;6&quot;:</span><br><span class="line">                        tmpnewchar = &quot;陆&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;7&quot;:</span><br><span class="line">                        tmpnewchar = &quot;柒&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;8&quot;:</span><br><span class="line">                        tmpnewchar = &quot;捌&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                    case &quot;9&quot;:</span><br><span class="line">                        tmpnewchar = &quot;玖&quot; + tmpnewchar;</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">                if(i == 0) tmpnewchar = tmpnewchar + &quot;角&quot;;</span><br><span class="line">                if(i == 1) tmpnewchar = tmpnewchar + &quot;分&quot;;</span><br><span class="line">                newchar = newchar + tmpnewchar;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">           //替换所有无用汉字</span><br><span class="line">        while(newchar.search(&quot;零零&quot;) != -1)</span><br><span class="line">            newchar = newchar.replace(&quot;零零&quot;, &quot;零&quot;);</span><br><span class="line">            newchar = newchar.replace(&quot;零亿&quot;, &quot;亿&quot;);</span><br><span class="line">            newchar = newchar.replace(&quot;亿万&quot;, &quot;亿&quot;);</span><br><span class="line">            newchar = newchar.replace(&quot;零万&quot;, &quot;万&quot;);</span><br><span class="line">            newchar = newchar.replace(&quot;零元&quot;, &quot;元&quot;);</span><br><span class="line">            newchar = newchar.replace(&quot;零角&quot;, &quot;&quot;);</span><br><span class="line">            newchar = newchar.replace(&quot;零分&quot;, &quot;&quot;);</span><br><span class="line">            if(newchar.charAt(newchar.length - 1) == &quot;元&quot;) &#123;</span><br><span class="line">                newchar = newchar + &quot;整&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        return newchar;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="6-操作dom元素"><a href="#6-操作dom元素" class="headerlink" title="6 操作dom元素"></a>6 操作dom元素</h4><p>封装$,选择元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ (selector)&#123;</span><br><span class="line">    var type = selector.substring(0,1) ;拿到第一个字符</span><br><span class="line">    if( type == &apos;#&apos;)&#123;</span><br><span class="line">        if( document.querySelector ) return document.querySelector(selector)</span><br><span class="line">        return document.getElementById(selector.subString(1))</span><br><span class="line">    &#125;</span><br><span class="line">    if( type == &apos;.&apos;)&#123;</span><br><span class="line">        if(document.querySelectorAll) return document.querySelectorAll(selector)</span><br><span class="line">        return document.getElementsByClassName(selector.substring(1))</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return document[&apos;querySelectorAll&apos; ? &apos;querySelectorAll&apos;:&apos;getElementsByTagName&apos;](selector)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>检测类名是否存在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hasClass( ele,name )&#123;</span><br><span class="line">    return ele.className.match(new RegExp(&apos;(\\s|^)&apos; + name + &apos;(\\s|$)&apos;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加类名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addClass( ele,name)&#123;</span><br><span class="line">    if( !this.hasClass(ele,name))&#123;</span><br><span class="line">        ele.className += &apos;&apos; +name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>删除类名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">removeClass (ele, name) &#123;</span><br><span class="line">    if (this.hasClass(ele, name)) &#123;</span><br><span class="line">        var reg = new RegExp(&apos;(\\s|^)&apos; + name + &apos;(\\s|$)&apos;);</span><br><span class="line">        ele.className = ele.className.replace(reg, &apos;&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>替换类名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">replaceClass (ele, newName, oldName) &#123;</span><br><span class="line">    this.removeClass(ele, oldName);</span><br><span class="line">    this.addClass(ele, newName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>获取兄弟节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">siblings (ele) &#123;</span><br><span class="line">    console.log(ele.parentNode)</span><br><span class="line">    var chid = ele.parentNode.children,eleMatch = []; </span><br><span class="line">    for(var i = 0, len = chid.length; i &lt; len; i ++)&#123; </span><br><span class="line">        if(chid[i] != ele)&#123; </span><br><span class="line">            eleMatch.push(chid[i]); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">    return eleMatch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>获取行间样式属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getByStyle (obj,name)&#123;</span><br><span class="line">    if(obj.currentStyle)&#123;</span><br><span class="line">        return  obj.currentStyle[name];</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return  getComputedStyle(obj,false)[name];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/02/vue从头搭建后台管理四-首页/" rel="next" title="vue从头搭建后台管理四-首页">
+                <i class="fa fa-chevron-left"></i> vue从头搭建后台管理四-首页
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/28/Nuxt的学习/" rel="prev" title="Nuxt的学习">
+                Nuxt的学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://img.faloo.com/NovelNode/0x0/1/1085/1085899.gif" alt="Sonho Creek">
+            
+              <p class="site-author-name" itemprop="name">Sonho Creek</p>
+              <p class="site-description motion-element" itemprop="description">个人笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qin-mx" target="_blank" title="Github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/user" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Coding</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014344991049250a2c80ec84cb4861bbd1d9b2c0c2850e000" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://panjiachen.github.io/vue-element-admin-site/#/zh-cn/import1" title="panjiachen" target="_blank">panjiachen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jspang.com/" title="jspan" target="_blank">jspan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jqhtml.com/15759.html" title="jqhtml" target="_blank">jqhtml</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-的一些封装"><span class="nav-number">1.</span> <span class="nav-text">javascript 的一些封装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-类型判断"><span class="nav-number">1.1.</span> <span class="nav-text">1. 类型判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-时间函数封装"><span class="nav-number">1.2.</span> <span class="nav-text">2. 时间函数封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-数组操作"><span class="nav-number">1.3.</span> <span class="nav-text">3.数组操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-String-字符串操作"><span class="nav-number">1.4.</span> <span class="nav-text">4. String 字符串操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Number"><span class="nav-number">1.5.</span> <span class="nav-text">5.Number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-操作dom元素"><span class="nav-number">1.6.</span> <span class="nav-text">6 操作dom元素</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sonho Creek</span>
+
+  
+</div>
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共52.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":50,"height":100},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

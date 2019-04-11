@@ -1,6 +1,9 @@
 html,body{
     height: 100%;
 }
+body{
+    background: #8bc2f9 !important;
+}
 p{
     margin: 0;
 }
